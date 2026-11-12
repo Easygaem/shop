@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for product in products %}
+        <div class="card">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.title }}">
+            {% else %}
+                <div style="height: 200px; background: #ddd; display: flex; align-items: center; justify-content: center;">Нет фото</div>
+            {% endif %}
+            <h3>{{ product.title }}</h3>
+            <p>Производитель: {{ product.manufacturer.name }}</p>
+            <p class="price">{{ product.price }} руб.</p>
+            
+            {% if product.in_stock %}
+                <p class="in-stock">В наличии</p>
+            {% else %}
+                <p class="out-of-stock">Нет в наличии</p>
+            {% endif %}
+            
+            <a href="{% url 'product_detail' product.pk %}" class="btn">Подробнее</a>
+        </div>
+    {% empty %}
+        <h2>Одежды пока нет. Добавьте товары через админку!</h2>
+    {% endfor %}
+{% endblock %}

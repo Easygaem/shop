@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }} — Магазин одежды</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+        header { background: #333; color: #fff; padding: 15px; text-align: center; }
+        header a { color: #fff; text-decoration: none; margin: 0 15px; font-weight: bold; }
+        .container { max-width: 1200px; margin: 20px auto; display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .card { background: #fff; border-radius: 8px; padding: 15px; width: 250px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); text-align: center; }
+        .card img { max-width: 100%; height: 200px; object-fit: contain; }
+        .card h3 { margin: 10px 0; font-size: 18px; }
+        .card .price { color: #e74c3c; font-weight: bold; font-size: 20px; }
+        .btn { display: inline-block; padding: 10px 15px; background: #3498db; color: white; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .btn:hover { background: #2980b9; }
+        .out-of-stock { color: red; font-weight: bold; }
+        .in-stock { color: green; font-weight: bold; }
+        .detail-img { max-width: 500px; width: 100%; }
+    </style>
+</head>
+<body>
+    <header>
+        <span style="font-size:20px;font-weight:bold;margin-right:25px;">Магазин одежды</span>
+        <a href="{% url 'product_list' %}">Главная (Каталог)</a>
+        <a href="{% url 'new_products' %}">Новинки</a>
+        <a href="/admin/">Админка</a>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
